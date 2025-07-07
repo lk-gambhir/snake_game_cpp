@@ -47,7 +47,7 @@ Use WASD to move, X to quit
 
 ## 🏗️ Build Status
 
-[![Build Snake Game](https://github.com/lk-gambhir/snake-game-cpp/actions/workflows/build.yml/badge.svg)](https://github.com/YOUR_USERNAME/snake-game-cpp/actions/workflows/build.yml)
+[![Build Snake Game](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml/badge.svg)](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml)
 
 ## Technical Details
 
@@ -67,9 +67,9 @@ Use WASD to move, X to quit
 
 ### Download Pre-built Binaries
 
-**[⬇️ Download Latest Release](https://github.com/lk-gambhir/snake-game-cpp/releases)**
+**[⬇️ Download Latest Release](https://github.com/lk-gambhir/snake_game_cpp/releases)**
 
-Or check the [Actions](https://github.com/lk-gambhir/snake-game-cpp/actions) tab for automatically built binaries.
+Or check the [Actions](https://github.com/lk-gambhir/snake_game_cpp/actions) tab for automatically built binaries.
 
 ### Build from Source
 
