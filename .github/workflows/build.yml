@@ -1,137 +1,20 @@
 name: Build Snake Game
 
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+on: [push, pull_request]
 
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup MinGW
-      uses: egor-tensin/setup-mingw@v2
-      with:
-        platform: x64
-    
-    - name: Build Snake Game
-      run: |
-        g++ -std=c++11 -Wall -Wextra -O2 -o snake_game.exe main.cpp
-    
-    - name: Upload Windows Executable
-      uses: actions/upload-artifact@v4
-      with:
-        name: snake-game-windows
-        path: snake_game.exe
 
-  build-linux:
-    runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y g++ build-essential
-    
-    - name: Build Snake Game (Linux version)
-      run: |
-        # Create a Linux-compatible version
-        sed 's/#include <conio.h>/#include <termios.h>\n#include <unistd.h>/' main.cpp > main_linux.cpp
-        sed -i 's/#include <windows.h>//' main_linux.cpp
-        sed -i 's/_kbhit()/kbhit()/' main_linux.cpp
-        sed -i 's/_getch()/getch()/' main_linux.cpp
-        sed -i 's/system("cls")/system("clear")/' main_linux.cpp
-        sed -i 's/Sleep(100)/usleep(100000)/' main_linux.cpp
-        
-        # Add Linux-specific functions at the top
-        echo '#include <termios.h>' > temp.cpp
-        echo '#include <unistd.h>' >> temp.cpp
-        echo '#include <sys/select.h>' >> temp.cpp
-        echo '' >> temp.cpp
-        echo 'int kbhit() {' >> temp.cpp
-        echo '    struct timeval tv = {0, 0};' >> temp.cpp
-        echo '    fd_set fds;' >> temp.cpp
-        echo '    FD_ZERO(&fds);' >> temp.cpp
-        echo '    FD_SET(STDIN_FILENO, &fds);' >> temp.cpp
-        echo '    return select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);' >> temp.cpp
-        echo '}' >> temp.cpp
-        echo '' >> temp.cpp
-        echo 'int getch() {' >> temp.cpp
-        echo '    struct termios oldt, newt;' >> temp.cpp
-        echo '    int ch;' >> temp.cpp
-        echo '    tcgetattr(STDIN_FILENO, &oldt);' >> temp.cpp
-        echo '    newt = oldt;' >> temp.cpp
-        echo '    newt.c_lflag &= ~(ICANON | ECHO);' >> temp.cpp
-        echo '    tcsetattr(STDIN_FILENO, TCSANOW, &newt);' >> temp.cpp
-        echo '    ch = getchar();' >> temp.cpp
-        echo '    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);' >> temp.cpp
-        echo '    return ch;' >> temp.cpp
-        echo '}' >> temp.cpp
-        echo '' >> temp.cpp
-        
-        # Combine and build
-        cat temp.cpp main_linux.cpp > snake_linux.cpp
-        g++ -std=c++11 -Wall -Wextra -O2 -o snake_game snake_linux.cpp
-    
-    - name: Upload Linux Executable
-      uses: actions/upload-artifact@v4
-      with:
-        name: snake-game-linux
-        path: snake_game
+      - uses: actions/checkout@v4
+      
+      - name: Setup MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+      
+      - name: Build
+        run: |
+          g++ main.cpp -o main.exe
 
-  build-macos:
-    runs-on: macos-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Build Snake Game (macOS version)
-      run: |
-        # Similar to Linux version
-        sed 's/#include <conio.h>/#include <termios.h>\n#include <unistd.h>/' main.cpp > main_macos.cpp
-        sed -i '' 's/#include <windows.h>//' main_macos.cpp
-        sed -i '' 's/_kbhit()/kbhit()/' main_macos.cpp
-        sed -i '' 's/_getch()/getch()/' main_macos.cpp
-        sed -i '' 's/system("cls")/system("clear")/' main_macos.cpp
-        sed -i '' 's/Sleep(100)/usleep(100000)/' main_macos.cpp
-        
-        # Add macOS-specific functions
-        echo '#include <termios.h>' > temp.cpp
-        echo '#include <unistd.h>' >> temp.cpp
-        echo '#include <sys/select.h>' >> temp.cpp
-        echo '' >> temp.cpp
-        echo 'int kbhit() {' >> temp.cpp
-        echo '    struct timeval tv = {0, 0};' >> temp.cpp
-        echo '    fd_set fds;' >> temp.cpp
-        echo '    FD_ZERO(&fds);' >> temp.cpp
-        echo '    FD_SET(STDIN_FILENO, &fds);' >> temp.cpp
-        echo '    return select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);' >> temp.cpp
-        echo '}' >> temp.cpp
-        echo '' >> temp.cpp
-        echo 'int getch() {' >> temp.cpp
-        echo '    struct termios oldt, newt;' >> temp.cpp
-        echo '    int ch;' >> temp.cpp
-        echo '    tcgetattr(STDIN_FILENO, &oldt);' >> temp.cpp
-        echo '    newt = oldt;' >> temp.cpp
-        echo '    newt.c_lflag &= ~(ICANON | ECHO);' >> temp.cpp
-        echo '    tcsetattr(STDIN_FILENO, TCSANOW, &newt);' >> temp.cpp
-        echo '    ch = getchar();' >> temp.cpp
-        echo '    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);' >> temp.cpp
-        echo '    return ch;' >> temp.cpp
-        echo '}' >> temp.cpp
-        echo '' >> temp.cpp
-        
-        cat temp.cpp main_macos.cpp > snake_macos.cpp
-        g++ -std=c++11 -Wall -Wextra -O2 -o snake_game snake_macos.cpp
-    
-    - name: Upload macOS Executable
-      uses: actions/upload-artifact@v4
-      with:
-        name: snake-game-macos
-        path: snake_game
