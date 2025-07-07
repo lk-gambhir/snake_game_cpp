@@ -47,7 +47,7 @@ Use WASD to move, X to quit
 
 ## 🏗️ Build Status
 
-[![Build Snake Game](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml/badge.svg)](https://github.com/lk-gambhir/snake-game-cpp/actions/workflows/build.yml)
+[![Build Snake Game](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml/badge.svg)](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml)
 
 ## Technical Details
 
