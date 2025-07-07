@@ -10,12 +10,44 @@ A classic Snake game implementation in C++ using linked lists for the snake's bo
 - **Score System**: Points awarded for eating food
 - **Smooth Controls**: WASD movement controls
 
-## Game Rules
+## 🎮 Game Controls
 
-- Use **W**, **A**, **S**, **D** keys to move the snake
-- Eat the food (*) to grow and increase your score
-- Avoid hitting walls or your own body
-- Press **X** to quit the game
+| Key | Action |
+|-----|--------|
+| **W** | Move Up |
+| **A** | Move Left |
+| **S** | Move Down |
+| **D** | Move Right |
+| **X** | Quit Game |
+
+## 📸 Demo
+
+```
+##################################
+#                                #
+#                                #
+#        O                       #
+#        o                       #
+#        o            *          #
+#                                #
+#                                #
+##################################
+Score: 30
+Use WASD to move, X to quit
+```
+
+## 🌟 Features
+
+- **🔗 Linked List Implementation**: Dynamic snake body management
+- **🎯 Smart Collision Detection**: Walls and self-collision
+- **🍎 Dynamic Food Generation**: Random food placement
+- **📊 Score Tracking**: Points system
+- **⚡ Smooth Gameplay**: Adjustable game speed
+- **🎨 Clean Console UI**: Simple and intuitive interface
+
+## 🏗️ Build Status
+
+[![Build Snake Game](https://github.com/lk-gambhir/snake-game-cpp/actions/workflows/build.yml/badge.svg)](https://github.com/YOUR_USERNAME/snake-game-cpp/actions/workflows/build.yml)
 
 ## Technical Details
 
@@ -31,23 +63,36 @@ A classic Snake game implementation in C++ using linked lists for the snake's bo
 - `Snake`: Manages the linked list of segments and snake operations
 - `SnakeGame`: Handles game logic, rendering, and user input
 
-## How to Compile and Run
+## 🚀 Quick Start
 
-### Prerequisites
+### Download Pre-built Binaries
+
+**[⬇️ Download Latest Release](https://github.com/lk-gambhir/snake-game-cpp/releases)**
+
+Or check the [Actions](https://github.com/lk-gambhir/snake-game-cpp/actions) tab for automatically built binaries.
+
+### Build from Source
+
+#### Prerequisites
 - C++ compiler (g++, Visual Studio, etc.)
-- Windows OS (uses Windows-specific libraries for console operations)
+- Windows/Linux/macOS
 
-### Compilation
-
+#### Windows
 ```bash
-g++ -o snake_game main.cpp
+g++ -std=c++11 -Wall -Wextra -O2 -o snake_game.exe main.cpp
+./snake_game.exe
 ```
 
-### Running the Game
-
+#### Linux/macOS
 ```bash
+make
 ./snake_game
 ```
+
+#### Using VS Code
+1. Open folder in VS Code
+2. Install C/C++ extension
+3. Press `Ctrl+Shift+P` → "Tasks: Run Task" → "Run Snake Game"
 
 ## Code Structure
 
