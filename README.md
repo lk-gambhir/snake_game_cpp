@@ -10,6 +10,10 @@ A classic Snake game implementation in C++ using linked lists for the snake's bo
 - **Score System**: Points awarded for eating food
 - **Smooth Controls**: WASD movement controls
 
+## 🏗️ Build Status
+
+[![Build Snake Game](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml/badge.svg)](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml)
+
 ## 🎮 Game Controls
 
 | Key | Action |
