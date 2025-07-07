@@ -45,10 +45,6 @@ Use WASD to move, X to quit
 - **⚡ Smooth Gameplay**: Adjustable game speed
 - **🎨 Clean Console UI**: Simple and intuitive interface
 
-## 🏗️ Build Status
-
-[![Build Snake Game](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml/badge.svg)](https://github.com/lk-gambhir/snake_game_cpp/actions/workflows/build.yml)
-
 ## Technical Details
 
 ### Data Structures Used
@@ -75,18 +71,12 @@ Or check the [Actions](https://github.com/lk-gambhir/snake_game_cpp/actions) tab
 
 #### Prerequisites
 - C++ compiler (g++, Visual Studio, etc.)
-- Windows/Linux/macOS
+- Windows
 
 #### Windows
 ```bash
 g++ -std=c++11 -Wall -Wextra -O2 -o snake_game.exe main.cpp
 ./snake_game.exe
-```
-
-#### Linux/macOS
-```bash
-make
-./snake_game
 ```
 
 #### Using VS Code
