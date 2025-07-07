@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup MinGW
       uses: egor-tensin/setup-mingw@v2
@@ -23,7 +23,7 @@ jobs:
         g++ -std=c++11 -Wall -Wextra -O2 -o snake_game.exe main.cpp
     
     - name: Upload Windows Executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: snake-game-windows
         path: snake_game.exe
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Install dependencies
       run: |
@@ -80,7 +80,7 @@ jobs:
         g++ -std=c++11 -Wall -Wextra -O2 -o snake_game snake_linux.cpp
     
     - name: Upload Linux Executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: snake-game-linux
         path: snake_game
@@ -89,7 +89,7 @@ jobs:
     runs-on: macos-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Build Snake Game (macOS version)
       run: |
@@ -131,7 +131,7 @@ jobs:
         g++ -std=c++11 -Wall -Wextra -O2 -o snake_game snake_macos.cpp
     
     - name: Upload macOS Executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: snake-game-macos
         path: snake_game
