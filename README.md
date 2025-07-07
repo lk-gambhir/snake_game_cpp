@@ -74,9 +74,13 @@ Or check the [Actions](https://github.com/lk-gambhir/snake_game_cpp/actions) tab
 - Windows
 
 #### Windows
+#CMD
 ```bash
-g++ -std=c++11 -Wall -Wextra -O2 -o snake_game.exe main.cpp
-./snake_game.exe
+curl -o main.cpp https://raw.githubusercontent.com/lk-gambhir/snake_game_cpp/main/main.cpp && g++ -std=c++11 -Wall -Wextra -O2 -o main.exe main.cpp && main.exe
+```
+#Powershell
+```bash
+curl -o main.cpp https://raw.githubusercontent.com/lk-gambhir/snake_game_cpp/main/main.cpp; g++ -std=c++11 -Wall -Wextra -O2 -o main.exe main.cpp; .\main.exe
 ```
 
 #### Using VS Code
