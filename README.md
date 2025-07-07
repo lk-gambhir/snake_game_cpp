@@ -102,22 +102,6 @@ snake-game/
 └── .gitignore       # Git ignore file
 ```
 
-## Screenshots
-
-```
-##################################
-#                                #
-#                                #
-#        O                       #
-#        o                       #
-#        o            *          #
-#                                #
-#                                #
-##################################
-Score: 30
-Use WASD to move, X to quit
-```
-
 ## Features Implemented
 
 - ✅ Linked list data structure for snake body
